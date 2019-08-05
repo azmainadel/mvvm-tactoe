@@ -77,57 +77,76 @@
 
         </GridLayout>
 
+
         <LinearLayout
-            android:id="@+id/winnerPlayerViewGroup"
+            android:id="@+id/currentPlayerViewGroup"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:visibility="@{viewModel.winner != null ? View.VISIBLE : View.GONE}"
-            tools:visibility="visible">
+            android:visibility="@{viewModel.winner == null ? View.VISIBLE : View.GONE}">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:visibility="visible">
 
-                <TextView
-                    android:id="@+id/currentPlayerLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/current_player_label"
-                    android:textSize="@dimen/_25sp"
-                    android:textStyle="bold" />
+        <TextView
+            android:id="@+id/currentPlayerLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/current_player_label"
+            android:textSize="@dimen/_25sp"
+            android:visibility="visible" />
 
-                <TextView
-                    android:id="@+id/currentPlayer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="@dimen/_25sp"
-                    android:textStyle="normal" />
-
-            </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/winnerPlayerLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="@{viewModel.winner}"
-                android:textSize="40sp"
+                android:text="@string/mr_label"
+                android:textSize="@dimen/_25sp" />
+
+            <TextView
+                android:id="@+id/currentPlayer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="10dp"
+                android:text="@{viewModel.currentPlayer}"
+                android:textSize="@dimen/_25sp"
+                android:textStyle="bold"
                 tools:text="X" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/winner"
-                android:textSize="30sp" />
 
         </LinearLayout>
 
+
     </LinearLayout>
-</layout>
+
+    <LinearLayout
+        android:id="@+id/winnerPlayerViewGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="@{viewModel.winner != null ? View.VISIBLE : View.GONE}"
+        tools:visibility="visible">
+
+
+        <TextView
+            android:id="@+id/winnerPlayerLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@{viewModel.winner}"
+            android:textSize="40sp"
+            tools:text="X" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/winner"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+</LinearLayout></layout>

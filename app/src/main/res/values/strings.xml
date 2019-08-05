@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">TicTacToe</string>
-    <string name="winner">Winner</string>
+    <string name="winner">You win!</string>
     <string name="action_reset">Reset</string>
-    <string name="current_player_label">Current Player:</string>
+    <string name="current_player_label">Hey, your move!</string>
+    <string name="mr_label">Mr.</string>
 </resources>

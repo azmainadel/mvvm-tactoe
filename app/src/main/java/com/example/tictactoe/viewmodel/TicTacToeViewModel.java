@@ -8,6 +8,7 @@ import androidx.databinding.ObservableArrayMap;
 import androidx.databinding.ObservableField;
 
 import com.example.tictactoe.model.Board;
+import com.example.tictactoe.model.enums.GameState;
 import com.example.tictactoe.model.enums.Player;
 
 public class TicTacToeViewModel implements ViewModel {
@@ -16,6 +17,8 @@ public class TicTacToeViewModel implements ViewModel {
 
     public final ObservableArrayMap<String, String> cells = new ObservableArrayMap<>();
     public final ObservableField<String> winner = new ObservableField<>();
+    public final ObservableField<String> currentPlayer = new ObservableField<>();
+    public final ObservableField<String> gameState = new ObservableField<>();
 
     public TicTacToeViewModel() {
         this.board = new Board();
@@ -24,6 +27,8 @@ public class TicTacToeViewModel implements ViewModel {
 
     @Override
     public void onCreate() {
+        currentPlayer.set(board.getCurrentPlayer().toString());
+        gameState.set(board.getGameState().toString());
 
     }
 
@@ -44,15 +49,18 @@ public class TicTacToeViewModel implements ViewModel {
 
     public void onResetSelected() {
         board.restartGame();
+        gameState.set(board.getGameState().toString());
         winner.set(null);
+        currentPlayer.set(board.getCurrentPlayer().toString());
         cells.clear();
     }
 
     public void onClickedCellAt(int row, int col) {
         Player playerThatMoved = board.mark(row, col);
-
+        currentPlayer.set(board.getCurrentPlayer().toString());
+        gameState.set(board.getGameState().toString());
         cells.put("" + row + col, (playerThatMoved == null) ? null : playerThatMoved.toString());
-
         winner.set((board.getWinner() == null) ? null : board.getWinner().toString());
+
     }
 }
